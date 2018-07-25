@@ -8,6 +8,7 @@
 
 <!-- jQuery 3 -->
 <script src="<?php echo base_url();?>assets/template/jquery/jquery.min.js"></script>
+<script src="<?php echo base_url();?>assets/template/jquery-print/jquery.print.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="<?php echo base_url();?>assets/template/bootstrap/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url();?>assets/template/jquery-ui/jquery-ui.js"></script>
@@ -190,6 +191,11 @@
             }
         });
         
+    });
+    $(document).on('click', '.btn-print', function() {
+        $("#modal-default modal-body").print({
+            title: "Comprobante de Venta"
+        });
     });
   })
 
