@@ -28,16 +28,30 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nombre</th>
-                                    <th>Tipo de Cliente</th>
-                                    <th>Tipo de Documento</th>
-                                    <th>N° de Documento</th>
-                                    <th>Telefono</th>
-                                    <th>Direccion</th>
+                                    <th>Nombre Cliente</th>
+                                    <th>Tipo Comprobante</th>
+                                    <th>N° Comprobante</th>
+                                    <th>Fecha</th>
+                                    <th>Total</th>
                                     <th>Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php if(!empty($ventas)): ?>
+                                    <?php foreach($ventas as $venta): ?>
+                                        <tr>
+                                            <td><?php echo $venta->id; ?></td>
+                                            <td><?php echo $venta->nombre; ?></td>
+                                            <td><?php echo $venta->tipocomprobante; ?></td>
+                                            <td><?php echo $venta->num_documento; ?></td>
+                                            <td><?php echo $venta->fecha; ?></td>
+                                            <td><?php echo $venta->total; ?></td>
+                                            <td>
+                                                <button type="button" class="btn btn-info btn-view-venta" value="<?php echo $venta->id; ?>" data-toggle="modal" data-target="#modal-default"><span class="fa fa-search"></span></button>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
@@ -57,7 +71,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Informacion del Cliente</h4>
+        <h4 class="modal-title">Informacion de la Venta</h4>
       </div>
       <div class="modal-body">
       </div>
