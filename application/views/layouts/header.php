@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="<?php echo base_url();?>assets/template/jquery-ui/jquery-ui.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/template/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- DataTables Exports -->
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/template/dataTables-export/css/buttons.dataTables.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/template/font-awesome/css/font-awesome.min.css">
   <!-- Theme style -->
@@ -29,7 +31,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index2.html" class="logo">
+    <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>S</b>V</span>
       <!-- logo for regular state and mobile devices -->

@@ -6,7 +6,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li>
-          <a href="../widgets.html">
+          <a href="<?php echo base_url(); ?>dashboard">
               <i class="fa fa-home"></i> <span>Inicio</span>
           </a>
         </li>
@@ -48,7 +48,7 @@
             <li><a href="../UI/general.html"><i class="fa fa-circle-o"></i> Categorias</a></li>
             <li><a href="../UI/icons.html"><i class="fa fa-circle-o"></i> Clientes</a></li>
             <li><a href="../UI/buttons.html"><i class="fa fa-circle-o"></i> Productos</a></li>
-            <li><a href="../UI/sliders.html"><i class="fa fa-circle-o"></i> Ventas</a></li>
+            <li><a href="<?php echo base_url(); ?>reportes/ventas"><i class="fa fa-circle-o"></i> Ventas</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -60,7 +60,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="../forms/general.html"><i class="fa fa-circle-o"></i> Tipo Documentos</a></li>
-            <li><a href="../forms/advanced.html"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+            <li><a href="<?php echo base_url(); ?>administrador/usuarios"><i class="fa fa-circle-o"></i> Usuarios</a></li>
           </ul>
         </li>
       </ul>
