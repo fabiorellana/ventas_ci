@@ -124,5 +124,13 @@ class Usuarios extends CI_Controller {
 			$this->edit($idusuario);
 		}
 	}
+
+	public function delete($id){
+		$data = array(
+			'estado' => "0", 
+		);
+		$this->Usuarios_model->update($id,$data);
+		echo "administrador/usuarios";
+	}
 }
 /*--- Fin Usuarios.php ---*/
