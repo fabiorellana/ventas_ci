@@ -92,7 +92,15 @@ class Usuarios extends CI_Controller {
 		$username = $this->input->post("username");
 		$rol = $this->input->post("rol");
 
-		$this->form_validation->set_rules('email', 'Email', 'required|is_unique[usuarios.email]');
+		$usuarioActual = $this->Usuarios_model->getUsuario($idusuario);
+
+		if ($email == $usuarioActual->email) {
+			$is_unique = '';
+		}else{
+			$is_unique = '|is_unique[usuarios.email]';
+		}
+
+		$this->form_validation->set_rules('email', 'Email', 'required'.$is_unique);
 
 		if ($this->form_validation->run()) {
 			$data = array(
