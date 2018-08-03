@@ -48,7 +48,7 @@
                                     <td><?php echo $usuario->rol;?></td>
                                     <td>
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-info btn-view" data-toggle="modal" data-target="#modal-default" value="<?php echo $usuario->id;?>">
+                                            <button type="button" class="btn btn-info btn-view-usuario" data-toggle="modal" data-target="#modal-default" value="<?php echo $usuario->id;?>">
                                               <span class="fa fa-search"></span>
                                             </button>
                                             <a href="<?php echo base_url();?>administrador/usuarios/edit/<?php echo $usuario->id;?>" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
