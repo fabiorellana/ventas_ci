@@ -31,4 +31,4 @@ class Ventas extends CI_Controller {
 		$this->load->view('layouts/footer');
 	}
 }
-/*--- Fin Productos.php ---*/
+/*--- Fin Ventas.php ---*/

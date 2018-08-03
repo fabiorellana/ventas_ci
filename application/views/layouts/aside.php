@@ -45,7 +45,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../UI/general.html"><i class="fa fa-circle-o"></i> Categorias</a></li>
+            <li><a href="<?php echo base_url(); ?>reportes/categorias"><i class="fa fa-circle-o"></i> Categorias</a></li>
             <li><a href="../UI/icons.html"><i class="fa fa-circle-o"></i> Clientes</a></li>
             <li><a href="../UI/buttons.html"><i class="fa fa-circle-o"></i> Productos</a></li>
             <li><a href="<?php echo base_url(); ?>reportes/ventas"><i class="fa fa-circle-o"></i> Ventas</a></li>
