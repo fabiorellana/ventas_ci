@@ -7,4 +7,14 @@ class Usuarios extends CI_Controller {
 		parent::__construct();
 		$this->load->model("Usuarios_model");
 	}
+
+	public function index(){
+		$data = array(
+			'permisos' => $this->Permisos_model->getPermisos(), 
+		);
+		$this->load->view('layouts/header');
+		$this->load->view('layouts/aside');
+		$this->load->view('admin/usuarios/list',$data);
+		$this->load->view('layouts/footer');
+	}
 }
