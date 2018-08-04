@@ -13,8 +13,10 @@ class Categorias extends CI_Controller {
 	public function index()
 	{
 		$data = array(
+			'permisos' => $this->permisos,
 			'categorias' => $this->Categorias_model->getCategorias(), 
 		);
+
 		$this->load->view('layouts/header');
 		$this->load->view('layouts/aside');
 		$this->load->view('admin/categorias/list',$data);
@@ -22,6 +24,10 @@ class Categorias extends CI_Controller {
 	}
 
 	public function add(){
+		if(! $this->permisos->insert){ 
+			redirect(base_url()); 
+			return; 
+		} 
 		$this->load->view('layouts/header');
 		$this->load->view('layouts/aside');
 		$this->load->view('admin/categorias/add');
