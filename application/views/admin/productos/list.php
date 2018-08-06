@@ -16,7 +16,9 @@
             <div class="box-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="<?php echo base_url();?>mantenimiento/productos/add" class="btn btn-primary btn-flat"><span class="fa fa-plus"></span> Agregar Productos</a>
+                        <?php if($permisos->insert): ?>
+                            <a href="<?php echo base_url();?>mantenimiento/productos/add" class="btn btn-primary btn-flat"><span class="fa fa-plus"></span> Agregar Productos</a>
+                        <?php endif; ?>
                     </div>
                 </div>
 
@@ -54,8 +56,16 @@
                                             <button type="button" class="btn btn-info btn-view-producto" data-toggle="modal" data-target="#modal-default" value="<?php echo $dataproducto; ?>">
                                               <span class="fa fa-search"></span>
                                             </button>
-                                            <a href="<?php echo base_url();?>mantenimiento/productos/edit/<?php echo $producto->id;?>" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
-                                            <a href="<?php echo base_url();?>mantenimiento/productos/delete/<?php echo $producto->id;?>" class="btn btn-danger btn-remove"><span class="fa fa-remove"></span></a>
+
+                                            <!-- Consulta si existe el permiso para editar -->
+                                            <?php if($permisos->update): ?>
+                                                <a href="<?php echo base_url();?>mantenimiento/productos/edit/<?php echo $producto->id;?>" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
+                                            <?php endif; ?>
+
+                                            <!-- Consulta si existe el permiso para eliminar -->
+                                            <?php if($permisos->delete): ?>
+                                                <a href="<?php echo base_url();?>mantenimiento/productos/delete/<?php echo $producto->id;?>" class="btn btn-danger btn-remove"><span class="fa fa-remove"></span></a>
+                                            <?php endif; ?>
                                         </div>
                                     </td>
                                 </tr>

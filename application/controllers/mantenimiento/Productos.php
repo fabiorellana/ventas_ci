@@ -3,8 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Productos extends CI_Controller {
 
+	private $permisos;
 	public function __construct(){
 		parent::__construct();
+		$this->permisos = $this->backend_lib->control();
 		$this->load->model("Productos_model");
 		$this->load->model("Categorias_model");
 	}
@@ -12,6 +14,7 @@ class Productos extends CI_Controller {
 	public function index()
 	{
 		$data = array(
+			'permisos' => $this->permisos,
 			'productos' => $this->Productos_model->getProductos(), 
 		);
 		$this->load->view('layouts/header');
@@ -21,6 +24,11 @@ class Productos extends CI_Controller {
 	}
 
 	public function add(){
+		if(! $this->permisos->insert){ 
+			redirect(base_url()); 
+			return; 
+		}
+
 		$data = array(
 			'categorias' => $this->Categorias_model->getCategorias(),
 		);
@@ -70,6 +78,11 @@ class Productos extends CI_Controller {
 	}
 
 	public function edit($id){
+		if(! $this->permisos->update){ 
+			redirect(base_url()); 
+			return; 
+		}
+
 		$data = array(
 			'producto' => $this->Productos_model->getProducto($id),
 			'categorias' => $this->Categorias_model->getCategorias(),
@@ -128,6 +141,11 @@ class Productos extends CI_Controller {
 	}
 
 	public function delete($id){
+		if(! $this->permisos->delete){ 
+			redirect(base_url()); 
+			return; 
+		}
+
 		$data = array(
 			'estado' => "0", 
 		);

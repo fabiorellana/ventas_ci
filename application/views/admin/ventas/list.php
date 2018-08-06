@@ -16,7 +16,9 @@
             <div class="box-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="<?php echo base_url();?>movimientos/ventas/add" class="btn btn-primary btn-flat"><span class="fa fa-plus"></span> Agregar Venta</a>
+                        <?php if($permisos->insert == 1): ?>
+                            <a href="<?php echo base_url();?>movimientos/ventas/add" class="btn btn-primary btn-flat"><span class="fa fa-plus"></span> Agregar Venta</a>
+                        <?php endif; ?>
                     </div>
                 </div>
 
@@ -47,7 +49,9 @@
                                             <td><?php echo $venta->fecha; ?></td>
                                             <td><?php echo $venta->total; ?></td>
                                             <td>
-                                                <button type="button" class="btn btn-info btn-view-venta" value="<?php echo $venta->id; ?>" data-toggle="modal" data-target="#modal-default"><span class="fa fa-search"></span></button>
+                                                <?php if($permisos->read == 1): ?>
+                                                    <button type="button" class="btn btn-info btn-view-venta" value="<?php echo $venta->id; ?>" data-toggle="modal" data-target="#modal-default"><span class="fa fa-search"></span></button>
+                                                <?php endif; ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
