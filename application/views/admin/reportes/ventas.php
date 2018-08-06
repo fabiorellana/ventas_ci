@@ -57,7 +57,9 @@
                                             <td><?php echo $venta->fecha; ?></td>
                                             <td><?php echo $venta->total; ?></td>
                                             <td>
-                                                <button type="button" class="btn btn-info btn-view-venta" value="<?php echo $venta->id; ?>" data-toggle="modal" data-target="#modal-default"><span class="fa fa-search"></span></button>
+                                                <?php if($permisos->read == 1): ?>
+                                                    <button type="button" class="btn btn-info btn-view-venta" value="<?php echo $venta->id; ?>" data-toggle="modal" data-target="#modal-default"><span class="fa fa-search"></span></button>
+                                                <?php endif ?> 
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
