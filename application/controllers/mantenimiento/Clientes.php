@@ -3,14 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Clientes extends CI_Controller {
 
+	private $permisos;
 	public function __construct(){
 		parent::__construct();
+		$this->permisos = $this->backend_lib->control();
 		$this->load->model("Clientes_model");
 	}
 
 	public function index()
 	{
 		$data = array(
+			'permisos' => $this->permisos,
 			'clientes' => $this->Clientes_model->getClientes(), 
 		);
 		$this->load->view('layouts/header');
@@ -20,6 +23,11 @@ class Clientes extends CI_Controller {
 	}
 
 	public function add(){
+		if(! $this->permisos->insert){ 
+			redirect(base_url()); 
+			return; 
+		} 
+
 		$data = array(
 			'tipoclientes' => $this->Clientes_model->getTipoClientes(),
 			'tipodocumentos' => $this->Clientes_model->getTipoDocumentos(), 
@@ -69,6 +77,11 @@ class Clientes extends CI_Controller {
 	}
 
 	public function edit($id){
+		if(! $this->permisos->update){ 
+			redirect(base_url()); 
+			return; 
+		}
+
 		$data = array(
 			'cliente' => $this->Clientes_model->getCliente($id),
 			'tipoclientes' => $this->Clientes_model->getTipoClientes(),
@@ -128,6 +141,11 @@ class Clientes extends CI_Controller {
 	}
 
 	public function delete($id){
+		if(! $this->permisos->delete){ 
+			redirect(base_url()); 
+			return; 
+		} 
+
 		$data = array(
 			'estado' => "0", 
 		);

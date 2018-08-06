@@ -47,11 +47,11 @@
                                             <button type="button" class="btn btn-info btn-view" data-toggle="modal" data-target="#modal-default" value="<?php echo $categoria->id;?>">
                                               <span class="fa fa-search"></span>
                                             </button>
-                                            <!--Consulta si existe el permiso para editar-->
+                                            <!-- Consulta si existe el permiso para editar -->
                                             <?php if($permisos->update == 1): ?>
                                                 <a href="<?php echo base_url();?>mantenimiento/categorias/edit/<?php echo $categoria->id;?>" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
                                             <?php endif; ?>
-                                            <!--Consulta si existe el permiso para eliminar-->
+                                            <!-- Consulta si existe el permiso para eliminar -->
                                             <?php if($permisos->delete == 1): ?>
                                                 <a href="<?php echo base_url();?>mantenimiento/categorias/delete/<?php echo $categoria->id; ?>" class="btn btn-danger btn-remove"><span class="fa fa-remove"></span></a>
                                             <?php endif; ?>

@@ -61,6 +61,11 @@ class Categorias extends CI_Controller {
 	}
 
 	public function edit($id){
+		if(! $this->permisos->update){ 
+			redirect(base_url()); 
+			return; 
+		}
+
 		$data = array(
 			'categoria' => $this->Categorias_model->getCategoria($id), 
 		);
@@ -114,6 +119,11 @@ class Categorias extends CI_Controller {
 	}
 
 	public function delete($id){
+		if(! $this->permisos->delete){ 
+			redirect(base_url()); 
+			return; 
+		}
+
 		$data = array(
 			'estado' => "0", 
 		);
