@@ -9,6 +9,10 @@
 <!-- jQuery 3 -->
 <script src="<?php echo base_url();?>assets/template/jquery/jquery.min.js"></script>
 <script src="<?php echo base_url();?>assets/template/jquery-print/jquery.print.js"></script>
+<!-- Highcharts -->
+<script src="<?php echo base_url();?>assets/template/highcharts/highcharts.js"></script>
+<script src="<?php echo base_url();?>assets/template/highcharts/exporting.js"></script>
+<script src="<?php echo base_url();?>assets/template/highcharts/export-data.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="<?php echo base_url();?>assets/template/bootstrap/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url();?>assets/template/jquery-ui/jquery-ui.js"></script>
@@ -35,6 +39,7 @@
 <script>
   $(document).ready(function () {
     var base_url = "<?php echo base_url();?>";
+    graficar();
     $(".btn-remove").on('click', function(e) {
         e.preventDefault();
         var ruta = $(this).attr("href");
@@ -360,6 +365,62 @@
     descuento = $("input[name=descuento]").val();
     total = subtotal + igv - descuento;
     $("input[name=total]").val(total.toFixed(2));
+  }
+
+  function graficar(){
+    Highcharts.chart('grafico', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Monto acumulado por las ventas de los meses'
+        },
+        subtitle: {
+            text: 'Año: 2018'
+        },
+        xAxis: {
+            categories: [
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'May',
+                'Jun',
+                'Jul',
+                'Aug',
+                'Sep',
+                'Oct',
+                'Nov',
+                'Dec'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Monto acumulado (pesos)'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">Monto: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} pesos</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Meses',
+            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+
+        }]
+    });
   }
 </script>
 </body>

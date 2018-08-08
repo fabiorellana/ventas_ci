@@ -79,7 +79,7 @@
                     <div class="col-md-12">
                         <div class="box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Monthly Recap Report</h3>
+                                <h3 class="box-title">Grafico estadistico</h3>
                             
                                 <div class="box-tools pull-right">
                             
@@ -89,8 +89,7 @@
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div id="grafico">
-                                            
+                                        <div id="grafico" style="margin: 0 auto">
                                         </div>
                                     </div>
                                 </div>
