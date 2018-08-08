@@ -85,4 +85,25 @@ class Ventas_model extends CI_Model {
 	public function save_detalle($data){
 		$this->db->insert("detalle_venta",$data);
 	}
+
+	public function years(){
+		$this->db->select("YEAR(fecha) as year");
+		$this->db->from("ventas");
+		$this->db->group_by("year");
+		$this->db->order_by("year","desc");
+		$resultados = $this->db->get();
+		return $resultados->result();
+	}
+
+	public function montos($year){
+		$this->db->select("MONTH(fecha) as mes, SUM(total) as monto");
+		$this->db->from("ventas");
+		/*$this->db->where("fecha >=".$year."-01-01");
+		$this->db->where("fecha <=".$year."-12-31");*/
+		$this->db->where("YEAR(fecha) = ".$year);
+		$this->db->group_by("mes");
+		$this->db->order_by("mes");
+		$resultados = $this->db->get();
+		return $resultados->result();
+	}
 }

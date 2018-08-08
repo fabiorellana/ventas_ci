@@ -39,7 +39,14 @@
 <script>
   $(document).ready(function () {
     var base_url = "<?php echo base_url();?>";
-    graficar();
+    var year = (new Date).getFullYear();
+    datagrafico(base_url,year);
+
+    $("#year").on('change', function() {;
+        yearselect = $(this).val();
+        datagrafico(base_url,yearselect);
+    });
+
     $(".btn-remove").on('click', function(e) {
         e.preventDefault();
         var ruta = $(this).attr("href");
@@ -367,7 +374,29 @@
     $("input[name=total]").val(total.toFixed(2));
   }
 
-  function graficar(){
+  function datagrafico(base_url,year){
+    namesMonth = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
+
+    $.ajax({
+        url: base_url + 'dashboard/getData',
+        type: 'POST',
+        dataType: 'json',
+        data: {year: year},
+        success: function(data){
+            var meses = new Array();
+            var montos = new Array();
+            $.each(data, function(key, value) {
+                 meses.push(namesMonth[value.mes - 1]);
+                 valor = Number(value.monto);
+                 montos.push(valor);
+            });
+            graficar(meses,montos,year);
+        }
+    });
+    
+  }
+
+  function graficar(meses,montos,year){
     Highcharts.chart('grafico', {
         chart: {
             type: 'column'
@@ -376,23 +405,10 @@
             text: 'Monto acumulado por las ventas de los meses'
         },
         subtitle: {
-            text: 'Año: 2018'
+            text: 'Año:' + year
         },
         xAxis: {
-            categories: [
-                'Jan',
-                'Feb',
-                'Mar',
-                'Apr',
-                'May',
-                'Jun',
-                'Jul',
-                'Aug',
-                'Sep',
-                'Oct',
-                'Nov',
-                'Dec'
-            ],
+            categories: meses,
             crosshair: true
         },
         yAxis: {
@@ -404,7 +420,7 @@
         tooltip: {
             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
             pointFormat: '<tr><td style="color:{series.color};padding:0">Monto: </td>' +
-                '<td style="padding:0"><b>{point.y:.1f} pesos</b></td></tr>',
+                '<td style="padding:0"><b>{point.y:.2f} pesos</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
             useHTML: true
@@ -413,11 +429,19 @@
             column: {
                 pointPadding: 0.2,
                 borderWidth: 0
+            },
+            series: {
+                dataLabels: {
+                    enabled: true,
+                    formatter: function(){
+                        return Highcharts.numberFormat(this.y,2);
+                    }
+                }
             }
         },
         series: [{
             name: 'Meses',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+            data: montos
 
         }]
     });

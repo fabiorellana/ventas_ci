@@ -82,7 +82,11 @@
                                 <h3 class="box-title">Grafico estadistico</h3>
                             
                                 <div class="box-tools pull-right">
-                            
+                                    <select name="year" id="year" class="form-control">
+                                        <?php foreach($years as $year): ?>
+                                            <option value="<?php echo $year->year; ?>"><?php echo $year->year; ?></option>
+                                        <?php  endforeach;?>
+                                    </select>
                                 </div>
                             </div>
                             <!-- /.box-header -->
