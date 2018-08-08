@@ -12,9 +12,15 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{
+		$data = array(
+			'cantVentas' => $this->Backend_model->rowCount("ventas"),
+			'cantUsuarios' => $this->Backend_model->rowCount("usuarios"), 
+			'cantClientes' => $this->Backend_model->rowCount("clientes"), 
+			'cantProductos' => $this->Backend_model->rowCount("productos"),  
+		);
 		$this->load->view('layouts/header');
 		$this->load->view('layouts/aside');
-		$this->load->view('admin/dashboard');
+		$this->load->view('admin/dashboard',$data);
 		$this->load->view('layouts/footer');
 	}
 }
