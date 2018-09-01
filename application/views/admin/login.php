@@ -12,7 +12,9 @@
   <link rel="stylesheet" href="<?php echo base_url();?>assets/template/font-awesome/css/font-awesome.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/template/dist/css/AdminLTE.min.css">
-
+  <!-- Icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url();?>assets/template/dist/img/logo-sven/favicon-16x16.png">
+  <link rel="manifest" href="<?php echo base_url();?>assets/template/dist/img/logo-sven/manifest.json">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -26,6 +28,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
+    <img src="<?php echo base_url();?>assets/template/dist/img/logo-sven/favicon-96x96.png" alt="">
     <h2>Sistemas de Ventas</h2>
   </div>
   <!-- /.login-logo -->
