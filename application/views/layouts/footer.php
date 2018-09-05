@@ -54,7 +54,11 @@
             url: ruta,
             type: 'POST',
             success: function(resp){
-                //http//:localhost/ventas_ci/mantenimiento/categorias
+                /*
+                    http//:localhost/ventas_ci/mantenimiento/categorias
+                    http//:localhost/ventas_ci/mantenimiento/clientes
+                    http//:localhost/ventas_ci/mantenimiento/productos
+                */
                 window.location.href = base_url + resp;
             }
         });
